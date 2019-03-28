@@ -13,5 +13,5 @@ def hello_world():
     return 'Flask Docker'
 
 if __name__ == '__main__':
-    logging.basicConfig(filename='logs/error.log',level=logging.DEBUG)
+    logging.basicConfig(filename='logs/error_log',level=logging.DEBUG)
     app.run(debug=True,host='0.0.0.0')

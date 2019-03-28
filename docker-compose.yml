@@ -30,6 +30,21 @@ services:
     links:
       - elasticsearch   
 
+  logstash:
+    image: docker.elastic.co/logstash/logstash-oss:6.6.0
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./app/logs:/tmp/logs
+    ports:
+      - "5001:5001"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - esnet
+    depends_on:
+      - elasticsearch
+
   app:
     build: .
     networks:
