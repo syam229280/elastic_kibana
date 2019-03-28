@@ -28,7 +28,16 @@ services:
     depends_on: 
       - elasticsearch
     links:
-      - elasticsearch          
+      - elasticsearch   
+
+  app:
+    build: .
+    networks:
+      - esnet
+    volumes:
+      - ./app:/usr/src/app
+    ports:
+      - 5000:5000
 
 volumes:
   esdata1:
