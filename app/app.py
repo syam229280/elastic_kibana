@@ -1,6 +1,7 @@
 from flask import Flask
 from elasticsearch import Elasticsearch
 from flask import jsonify
+import logging
 
 app = Flask(__name__)
 
@@ -12,4 +13,5 @@ def hello_world():
     return 'Flask Docker'
 
 if __name__ == '__main__':
+    logging.basicConfig(filename='logs/error.log',level=logging.DEBUG)
     app.run(debug=True,host='0.0.0.0')
