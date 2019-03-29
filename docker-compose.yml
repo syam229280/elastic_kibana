@@ -54,6 +54,8 @@ services:
       - ./app:/usr/src/app
     ports:
       - 5000:5000
+    depends_on:
+      - logstash      
 
 volumes:
   esdata1:
