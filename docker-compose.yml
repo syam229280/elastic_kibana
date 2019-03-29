@@ -38,6 +38,7 @@ services:
       - ./app/logs:/tmp/logs
     ports:
       - "5001:5001"
+    command: logstash -f /usr/share/logstash/pipeline/  
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
